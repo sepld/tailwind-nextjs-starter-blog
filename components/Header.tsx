@@ -44,10 +44,7 @@ const Header = () => {
           <MobileNav />
         </div>
       </header>
-      {/* <!-- 使用 w-full 类使线条宽度为父容器的 100% --> */}
-      <hr className="w-full border-t border-gray-200 absolute inset-0" />
     </div>
-
   )
 }
 
