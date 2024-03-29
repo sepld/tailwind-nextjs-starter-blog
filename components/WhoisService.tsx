@@ -1,4 +1,4 @@
-"use client"; // This is a client component 👈🏽
+"use client"; // This is a client component
 
 import React, { useState } from "react";
 import ReactHtmlParser from "react-html-parser";
