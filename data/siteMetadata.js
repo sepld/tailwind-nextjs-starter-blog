@@ -1,12 +1,12 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Ai Domain Beta',
+  title: 'Ai Name Services',
   author: 'SepLD',
-  headerTitle: 'Ai DomainBeta',
-  description: 'A blog created with Next.js and Tailwind.css',
+  headerTitle: 'Ai NameServices',
+  description: 'AI Name Service: Your premier destination for effortless domain registration and optimization powered by cutting-edge artificial intelligence.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteUrl: 'https://www.ainameservices.com',
   siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
   siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/twitter-card.png',
