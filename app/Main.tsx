@@ -9,7 +9,7 @@ const MAX_DISPLAY = 5
 
 export default function Home({ posts }) {
   return (
-    <div className='mt-5'>
+    <div className="mt-5">
       <WhoisService />
       {/* <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pb-8 pt-6 md:space-y-5">
