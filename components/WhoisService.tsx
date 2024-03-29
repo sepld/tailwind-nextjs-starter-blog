@@ -1,8 +1,8 @@
 "use client"; // This is a client component 👈🏽
 
-import React, { useState } from 'react';
-import ReactHtmlParser from 'react-html-parser';
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
+import React, { useState } from "react";
+import ReactHtmlParser from "react-html-parser";
+import { MDXLayoutRenderer } from "pliny/mdx-components"
 
 interface DomainInfo {
   // 根据WHOIS API的响应定义类型
@@ -11,10 +11,10 @@ interface DomainInfo {
 }
 
 const WhoisService = () => {
-  const [domain, setDomain] = useState('');
+  const [domain, setDomain] = useState("");
   const [domainInfo, setDomainInfo] = useState<DomainInfo | null>(null);
   const [loading, setLoading] = useState(false);
-  const [domainDisplay, setDomainDisplay] = useState('');
+  const [domainDisplay, setDomainDisplay] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDomain(e.target.value);
@@ -26,7 +26,7 @@ const WhoisService = () => {
     setLoading(true);
     try {
       const response = await fetch(`https://sapi.k780.com/?app=domain.whois&domain=${domain}&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json`, {
-        method: 'GET',
+        method: "GET",
         // 如果API需要认证，请在这里添加认证信息
       });
 
@@ -50,7 +50,7 @@ const WhoisService = () => {
       }
       setDomainDisplay(domain);
     } catch (error) {
-      console.error('Error fetching domain information:', error);
+      console.error("Error fetching domain information:", error);
       setDomainInfo({ success: false, result: "error" });
     } finally {
       setLoading(false);
@@ -58,8 +58,8 @@ const WhoisService = () => {
   };
 
   return (
-    <div className='flex flex-col  md:flex-row w-full'>
-      <nav className='basis-1/3 mr-2 flex-shrink-0'>
+    <div className="flex flex-col  md:flex-row w-full">
+      <nav className="basis-1/3 mr-2 flex-shrink-0">
         <form onSubmit={handleFormSubmit}>
           <div className="relative w-full">
             <input
@@ -77,14 +77,14 @@ const WhoisService = () => {
               disabled={loading}
               data-ripple-light="true"
             >
-              {loading ? 'Searching...' : 'Search'}
+              {loading ? "Searching..." : "Search"}
             </button>
           </div>
         </form>
       </nav>
 
-      <div className='basis-2/3 ml-2'>
-        <div className='flex items-center mb-5' >
+      <div className="basis-2/3 ml-2">
+        <div className="flex items-center mb-5" >
           <h1 className="text-2xl ml-5 font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl md:text-4xl">
             {domainDisplay ? (domainDisplay) : (
               "Whois Query Service"
@@ -93,8 +93,8 @@ const WhoisService = () => {
         </div>
 
         {domainInfo && (
-          <div className='overflow-auto p-4 bg-gray-100 rounded-lg'>
-            <div className='whitespace-pre-wrap'>
+          <div className="overflow-auto p-4 bg-gray-100 rounded-lg">
+            <div className="whitespace-pre-wrap">
               {ReactHtmlParser(domainInfo.result)}
             </div>
           </div>
@@ -102,15 +102,15 @@ const WhoisService = () => {
 
         {
           !domainInfo && (
-            <div className='overflow-auto p-4 bg-gray-40 rounded-lg'>
-              <div className='whitespace-pre-wrap'>
+            <div className="overflow-auto p-4 bg-gray-40 rounded-lg">
+              <div className="whitespace-pre-wrap">
                 <h1 className="text-3xl  font-extrabold">
                   What is Whois Query Service?
                 </h1>
-                <hr className='mt-1' />
+                <hr className="mt-1" />
 
-                <div className='overflow-auto mt-5 mb-5'>
-                  <div className='whitespace-pre-wrap text-1xl'>
+                <div className="overflow-auto mt-5 mb-5">
+                  <div className="whitespace-pre-wrap text-1xl">
                     Whois (pronounced as "who is") is a widely used internet service protocol used to query databases and obtain information about domain name registrations and IP address assignments. The Whois Query Service provides a way to retrieve information about registered domain names, including details about the domain owner, registration and expiration dates, domain name servers (DNS), and other relevant information.
                   </div>
                 </div>
@@ -118,13 +118,13 @@ const WhoisService = () => {
                 <h1 className="text-3xl  font-extrabold">
                   How Does WHOIS Work?
                 </h1>
-                <hr className='mt-1' />
-                <div className='overflow-auto mt-5 mb-5'>
-                  <div className='whitespace-pre-wrap text-1xl'>
+                <hr className="mt-1" />
+                <div className="overflow-auto mt-5 mb-5">
+                  <div className="whitespace-pre-wrap text-1xl">
                     The WHOIS service operates by maintaining a database of information related to domain name registrations and IP address allocations. This information typically includes:
                   </div>
                   <li>
-                    Domain Name Owner's Details: The name, address, phone number, and email address of the person or organization that owns the domain.
+                    Domain Name Owner"s Details: The name, address, phone number, and email address of the person or organization that owns the domain.
                   </li>
                   <li>
                     Registrar Information: The name and contact information of the domain registrar through which the domain was registered.
@@ -144,9 +144,9 @@ const WhoisService = () => {
                 <h1 className="text-3xl  font-extrabold">
                   Purpose and Uses of WHOIS
                 </h1>
-                <hr className='mt-1' />
-                <div className='overflow-auto mt-5 mb-5'>
-                  <div className='whitespace-pre-wrap text-1xl'>
+                <hr className="mt-1" />
+                <div className="overflow-auto mt-5 mb-5">
+                  <div className="whitespace-pre-wrap text-1xl">
                     The WHOIS service is used for a variety of purposes, including but not limited to:
                   </div>
                 </div>
