@@ -65,7 +65,7 @@ const WhoisService = () => {
               type="text"
               value={domain}
               onChange={handleInputChange}
-              placeholder="Lookup Domain/IP address"
+              placeholder="Lookup Domain"
               disabled={loading}
               className="focus:shadow-outline mb-5 w-full rounded-lg border-gray-300 px-3 py-2 focus:outline-none"
               required
