@@ -8,7 +8,8 @@ import SearchButton from './SearchButton'
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-between py-5">
+    <div>
+      <header className="flex items-center justify-between py-5 relative">
       <div>
         <Link href="/" aria-label={siteMetadata.headerTitle}>
           <div className="flex items-center justify-between">
@@ -38,11 +39,15 @@ const Header = () => {
             </Link>
           ))}
         {/* 搜索框，不启用 */}
-        {/* <SearchButton /> */}  
-        <ThemeSwitch />
+        {/* <SearchButton /> */}
+        {/* <ThemeSwitch /> */}
         <MobileNav />
       </div>
     </header>
+        {/* <!-- 使用 w-full 类使线条宽度为父容器的 100% --> */}
+        <hr className="w-full border-t border-gray-200 absolute inset-0" />
+    </div>
+    
   )
 }
 
