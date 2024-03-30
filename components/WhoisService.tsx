@@ -67,7 +67,7 @@ const WhoisService = () => {
               onChange={handleInputChange}
               placeholder="Lookup Domain"
               disabled={loading}
-              className="focus:shadow-outline mb-5 w-full rounded-lg border-gray-300 px-3 py-2 focus:outline-none"
+              className="focus:shadow-outline mb-5 w-full rounded-lg border-gray-300 px-3 py-2 focus:outline-none bg-gray-900 dark:text-gray-100"
               required
             />
             <button
@@ -90,7 +90,7 @@ const WhoisService = () => {
         </div>
 
         {domainInfo && (
-          <div className="overflow-auto rounded-lg bg-gray-100 p-4">
+          <div className="overflow-auto rounded-lg bg-gray-900 p-4 dark:text-gray-100">
             <div className="whitespace-pre-wrap">{ReactHtmlParser(domainInfo.result)}</div>
           </div>
         )}

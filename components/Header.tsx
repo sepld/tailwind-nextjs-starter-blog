@@ -40,7 +40,7 @@ const Header = () => {
             ))}
           {/* 搜索框，不启用 */}
           {/* <SearchButton /> */}
-          {/* <ThemeSwitch /> */}
+          <ThemeSwitch />
           <MobileNav />
         </div>
       </header>
