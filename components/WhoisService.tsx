@@ -67,7 +67,7 @@ const WhoisService = () => {
               onChange={handleInputChange}
               placeholder="Lookup Domain"
               disabled={loading}
-              className="focus:shadow-outline mb-5 w-full rounded-lg border-gray-300 px-3 py-2 focus:outline-none bg-gray-900 dark:text-gray-100"
+              className="focus:shadow-outline mb-5 w-full rounded-lg border-gray-300 bg-gray-900 px-3 py-2 focus:outline-none dark:text-gray-100"
               required
             />
             <button
