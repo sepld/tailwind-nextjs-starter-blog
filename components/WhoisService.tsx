@@ -19,7 +19,6 @@ const WhoisService = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDomain(e.target.value)
   }
-  const whoisMdxSource = `data/whois/whois.mdx` // 相对于 pages 目录的路径
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -57,17 +56,17 @@ const WhoisService = () => {
   }
 
   return (
-    <div className="flex w-full  flex-col md:flex-row">
-      <nav className="mr-2 flex-shrink-0 basis-1/3">
+    <div className="flex w-full flex-col md:flex-row">
+      <nav className="flex-shrink-0 basis-1/3 md:mr-2">
         <form onSubmit={handleFormSubmit}>
-          <div className="relative w-full">
+          <div className="relative mb-5 w-full">
             <input
               type="text"
               value={domain}
               onChange={handleInputChange}
               placeholder="Lookup Domain"
               disabled={loading}
-              className="focus:shadow-outline dark:text-white-100 mb-5 w-full rounded-lg border-gray-300 px-3 py-2 focus:outline-none dark:bg-gray-400"
+              className="focus:shadow-outline dark:text-white-200 w-full rounded-lg border-gray-300 px-3 py-2 focus:outline-none dark:bg-gray-800"
               required
             />
             <button
@@ -82,15 +81,15 @@ const WhoisService = () => {
         </form>
       </nav>
 
-      <div className="ml-2 basis-2/3">
+      <div className="basis-2/3 md:ml-2">
         <div className="mb-5 flex items-center">
-          <h1 className="ml-5 text-2xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl md:text-4xl">
+          <h1 className="ml-1 text-2xl font-extrabold leading-9 tracking-tight text-gray-900  dark:text-gray-100 sm:text-2xl md:text-4xl">
             {domainDisplay ? domainDisplay : 'Whois Query Service'}
           </h1>
         </div>
 
         {domainInfo && (
-          <div className="overflow-auto rounded-lg bg-gray-900 p-4 dark:text-gray-100">
+          <div className="overflow-auto rounded-lg bg-gray-100 p-4 dark:bg-gray-800 dark:text-gray-100">
             <div className="whitespace-pre-wrap">{ReactHtmlParser(domainInfo.result)}</div>
           </div>
         )}
