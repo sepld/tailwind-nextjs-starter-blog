@@ -94,7 +94,7 @@ const WhoisService = () => {
         )}
 
         {!domainInfo && (
-          <div className="bg-gray-40 overflow-auto rounded-lg p-4">
+          <div className="bg-gray-40 overflow-auto rounded-lg">
             <div className="whitespace-pre-wrap">
               <h1 className="text-3xl  font-extrabold">What is Whois Query Service?</h1>
               <hr className="mt-1" />
