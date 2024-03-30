@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import ReactHtmlParser from 'react-html-parser'
-import { MDXLayoutRenderer } from 'pliny/mdx-components'
 
 interface DomainInfo {
   // 根据WHOIS API的响应定义类型
