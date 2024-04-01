@@ -38,7 +38,6 @@ export default function WhoisService() {
       <nav className="flex-shrink-0 basis-1/3 md:mr-2">
         <form onSubmit={handleFormSubmit}>
           <div className="relative mb-5 w-full">
-            {/* 显示错误信息 */}
             <input
               type="text"
               value={domain}
@@ -48,6 +47,7 @@ export default function WhoisService() {
               className="focus:shadow-outline dark:text-white-200 w-full rounded-lg border-gray-300 px-3 py-2 focus:outline-none dark:bg-gray-800"
               required
             />
+            {/* 显示错误信息 */}
             {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
             <button
               className="peer-placeholder-shown:bg-blue-gray-500 absolute right-1 top-1 select-none rounded bg-pink-500 px-4 py-2 text-center align-middle font-sans text-xs font-bold text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
