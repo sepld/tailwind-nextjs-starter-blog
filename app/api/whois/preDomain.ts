@@ -13,14 +13,14 @@ export default function preDomain(domain: string) {
     domain: domain,
     host: null,
   }
-
+  let is_break = false
   switch (true) {
     case net.isIP(domain) !== 0:
       server_ip = servers['_']['ip']
       break
     default:
       tld = punycode.toASCII(domain)
-      let is_break = false
+     
       while (!is_break) {
         server_tld = servers[tld]
         if (!tld || server_tld) {
