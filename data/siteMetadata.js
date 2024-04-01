@@ -1,9 +1,10 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Ai Name Services',
+  title: 'AiNameServices, Domain Name Search, domain Register, Compare Prices',
   author: 'SepLD',
   headerTitle: 'Ai NameServices',
-  description: 'AI Name Service: Your premier destination for effortless domain registration and optimization powered by cutting-edge artificial intelligence.',
+  description:
+    'AI Name Service: Your premier destination for effortless domain registration and optimization powered by cutting-edge artificial intelligence.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://www.ainameservices.com',
@@ -11,7 +12,7 @@ const siteMetadata = {
   siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/twitter-card.png',
   mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'address@yoursite.com',
+  email: 'sepdld@ygmail.com',
   github: 'https://github.com',
   twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com',
