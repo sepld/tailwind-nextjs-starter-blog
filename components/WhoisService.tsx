@@ -1,19 +1,12 @@
-'use client' // This is a client component
-
+'use client'
 import React, { useState } from 'react'
-import ReactHtmlParser from 'react-html-parser'
 
-interface DomainInfo {
-  // 根据WHOIS API的响应定义类型
-  success: boolean
-  result: string
-}
-
-const WhoisService = () => {
+export default function WhoisService() {
   const [domain, setDomain] = useState('')
-  const [domainInfo, setDomainInfo] = useState<DomainInfo | null>(null)
+  const [domainInfo, setDomainInfo] = useState('')
   const [loading, setLoading] = useState(false)
   const [domainDisplay, setDomainDisplay] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDomain(e.target.value)
@@ -23,32 +16,18 @@ const WhoisService = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      const response = await fetch(
-        `https://sapi.k780.com/?app=domain.whois&domain=${domain}&appkey=10003&sign=b59bc3ef6191eb9f747dd4e83c99f2a4&format=json`,
-        {
-          method: 'GET',
-          // 如果API需要认证，请在这里添加认证信息
-        }
-      )
-
-      const data = await response.json()
-      if (data.success == '1') {
-        if (data.result.status == 'ALREADY_WHOIS') {
-          setDomainInfo({ success: true, result: data.result.details })
-        } else if (data.result.status == 'WAIT_PROCESS') {
-          setDomainInfo({ success: true, result: data.msg })
-        } else if (data.result.status == 'NOT_REGISTER') {
-          setDomainInfo({ success: true, result: 'The domain name has not been registered yet' })
-        } else if (data.result.status == 'BE_RETAINED') {
-          setDomainInfo({ success: true, result: 'Domain name is reserved' })
-        }
-      } else {
-        setDomainInfo({ success: false, result: data.msg })
+      const res = await fetch(`/api/whois?domain=${domain}`)
+      const data = await res.json()
+      if (data.status == 'succ') {
+        setDomainInfo(data.data)
+        setDomainDisplay(domain)
+        setErrorMessage('')
+      } else if (data.status == 'invalid') {
+        setErrorMessage('请输入一个合法的域名 / IP 地址 / ASN')
       }
-      setDomainDisplay(domain)
     } catch (error) {
       console.error('Error fetching domain information:', error)
-      setDomainInfo({ success: false, result: 'error' })
+      setDomainInfo(error)
     } finally {
       setLoading(false)
     }
@@ -59,6 +38,7 @@ const WhoisService = () => {
       <nav className="flex-shrink-0 basis-1/3 md:mr-2">
         <form onSubmit={handleFormSubmit}>
           <div className="relative mb-5 w-full">
+            {/* 显示错误信息 */}
             <input
               type="text"
               value={domain}
@@ -68,6 +48,7 @@ const WhoisService = () => {
               className="focus:shadow-outline dark:text-white-200 w-full rounded-lg border-gray-300 px-3 py-2 focus:outline-none dark:bg-gray-800"
               required
             />
+            {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
             <button
               className="peer-placeholder-shown:bg-blue-gray-500 absolute right-1 top-1 select-none rounded bg-pink-500 px-4 py-2 text-center align-middle font-sans text-xs font-bold text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
               type="submit"
@@ -89,7 +70,7 @@ const WhoisService = () => {
 
         {domainInfo && (
           <div className="overflow-auto rounded-lg bg-gray-100 p-4 dark:bg-gray-800 dark:text-gray-100">
-            <div className="whitespace-pre-wrap">{ReactHtmlParser(domainInfo.result)}</div>
+            <div className="whitespace-pre-wrap">{domainInfo}</div>
           </div>
         )}
 
@@ -171,5 +152,3 @@ const WhoisService = () => {
     </div>
   )
 }
-
-export default WhoisService
