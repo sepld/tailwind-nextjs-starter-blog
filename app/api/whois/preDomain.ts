@@ -5,7 +5,7 @@ import * as punycode from 'punycode'
 export default function preDomain(domain: string) {
   let parts, tld, server_tld, server_ip
 
-  const server: { [key: string]: any } = {
+  const server = {
     ollow: 2,
     timeout: 10000, // 60 seconds in ms
     query: '$addr\r\n',
