@@ -4,8 +4,9 @@ import * as punycode from 'punycode'
 
 export default function preDomain(domain: string) {
   let parts, tld, server_tld, server_ip
-  let server = {
-    follow: 2,
+
+  const server: { [key: string]: any } = {
+    ollow: 2,
     timeout: 10000, // 60 seconds in ms
     query: '$addr\r\n',
     punycode: false,
@@ -39,5 +40,6 @@ export default function preDomain(domain: string) {
     server.domain = punycode.toASCII(domain)
   }
   Object.assign(server, server_ip, server_tld)
+  console.info('server1:', server)
   return server
 }
