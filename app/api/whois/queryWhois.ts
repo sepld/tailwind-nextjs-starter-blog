@@ -1,6 +1,6 @@
 import net from 'net'
 
-export async function queryWhois(server: any): Promise<string> {
+export async function queryWhois(server): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     // 创建一个 socket 客户端
     const client = new net.Socket()
