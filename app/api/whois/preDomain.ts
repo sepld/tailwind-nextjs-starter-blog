@@ -20,10 +20,11 @@ export default function preDomain(domain: string) {
       break
     default:
       tld = punycode.toASCII(domain)
-      while (true) {
+      let is_break = false
+      while (!is_break) {
         server_tld = servers[tld]
         if (!tld || server_tld) {
-          break
+          is_break = true
         }
         tld = tld.replace(/^.+?(\.|$)/, '')
       }
