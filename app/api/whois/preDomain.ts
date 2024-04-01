@@ -20,7 +20,6 @@ export default function preDomain(domain: string) {
       break
     default:
       tld = punycode.toASCII(domain)
-     
       while (!is_break) {
         server_tld = servers[tld]
         if (!tld || server_tld) {
